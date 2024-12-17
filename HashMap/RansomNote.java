@@ -29,5 +29,25 @@ public class RansomNote {
     }
 
 
-    
+    public boolean canConstructUsingArray(String ransomNote, String magazine) {
+        int[] rsm = getFreq(ransomNote);
+        int[] mag = getFreq(magazine);
+
+        for (int i = 0; i < 26; i++) {
+            if (rsm[i] > mag[i]) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    private static int[] getFreq(String s) {
+        int[] freq = new int[26];   // all elements init to 0 already
+        for (char c : s.toCharArray()) {
+            int i = c - 'a';
+            freq[i]++;
+        }
+        return freq;
+    }
 }
