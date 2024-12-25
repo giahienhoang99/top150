@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class MaxNumVowelsInSubstringOfLengthK {
     public int maxVowels(String s, int k) {
         int left = 0;
