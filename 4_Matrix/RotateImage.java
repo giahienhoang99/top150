@@ -11,4 +11,25 @@ public class RotateImage {
             }
         }
     }
+
+    // transpose + flip horizontally
+    public void rotate2(int[][] matrix) {
+        int l = matrix.length;
+        // transpose
+        for (int i = 0; i < l; i++) {
+            for (int j = i + 1; j < l; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        // flip horizontally
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < l/2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][l - j - 1];
+                matrix[i][l - j - 1] = temp;
+            }
+        }
+    }
 }
