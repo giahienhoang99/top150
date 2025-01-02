@@ -1,3 +1,4 @@
+package top150;
 public class SymmetricTree {
     class TreeNode {
         int val;

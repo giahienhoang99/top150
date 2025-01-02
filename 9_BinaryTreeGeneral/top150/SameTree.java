@@ -1,3 +1,4 @@
+package top150;
 public class SameTree {
     class TreeNode {
         int val;
