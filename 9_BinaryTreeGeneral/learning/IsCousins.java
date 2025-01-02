@@ -24,7 +24,7 @@ public class IsCousins {
     }
 
     // my solution using level order traversal or bfs on tree
-    public boolean isCousins(TreeNode root, int x, int y) {
+    public boolean isCousins1(TreeNode root, int x, int y) {
         // cousins = nodes w/ same level and different parents
 
         // level order traversal using a queue
@@ -73,5 +73,36 @@ public class IsCousins {
             }
         }
         return false;
+    }
+
+    // most optimized solution 
+    private int lx = 0;
+    private int ly = 0;
+    private TreeNode px;
+    private TreeNode py;
+    
+    public boolean isCousins2(TreeNode root, int x, int y) {
+        // check if same level and different parent
+        getLevelsAndParents(root, x, y, 0, null);
+        return lx == ly && px != py;
+        
+    }
+
+    // recursive helper function
+    // calculates the levels of x and y and get their parents
+    private void getLevelsAndParents(TreeNode root, int x, int y, int depth, TreeNode parent) {
+        if (root == null) {
+            return;
+        }
+        if (root.val == x) {
+            lx = depth;
+            px = parent;
+        }
+        if (root.val == y) {
+            ly = depth;
+            py = parent;
+        }
+        getLevelsAndParents(root.left, x, y, depth + 1, root);
+        getLevelsAndParents(root.right, x, y, depth + 1, root);
     }
 }
