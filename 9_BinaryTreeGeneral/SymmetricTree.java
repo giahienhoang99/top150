@@ -1,5 +1,3 @@
-import javax.swing.tree.TreeNode;
-
 public class SymmetricTree {
     class TreeNode {
         int val;
