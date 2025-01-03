@@ -34,7 +34,6 @@ public class IsCousins {
         boolean seenY = false;
         while (!q.isEmpty()) {
             int qSize = q.size();
-            
             // check current level nodes only
             while (qSize > 0) {
                 TreeNode cur = q.poll();
@@ -55,8 +54,7 @@ public class IsCousins {
                 // check if same parent
                 if (cur.left != null && cur.right != null) {
                     if ((cur.left.val == x || cur.left.val == y) && (cur.right.val == x || cur.right.val == y)) {
-                            return false;
-                        }
+                        return false;
                     }
                 }
                 qSize--;
