@@ -8,14 +8,14 @@ public class IsCousins {
         int val;
         TreeNode left;
         TreeNode right;
-    
+
         TreeNode() {
         }
-    
+
         TreeNode(int val) {
             this.val = val;
         }
-    
+
         TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
@@ -23,19 +23,18 @@ public class IsCousins {
         }
     }
 
-    // my solution using level order traversal or bfs on tree
+    // level order traversal (bfs) with early stopping (found 1 node but not the
+    // other)
     public boolean isCousins1(TreeNode root, int x, int y) {
         // cousins = nodes w/ same level and different parents
-
         // level order traversal using a queue
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(root);
-
         boolean seenX = false;
         boolean seenY = false;
-
         while (!q.isEmpty()) {
             int qSize = q.size();
+            
             // check current level nodes only
             while (qSize > 0) {
                 TreeNode cur = q.poll();
@@ -54,10 +53,8 @@ public class IsCousins {
                     q.add(cur.right);
                 }
                 // check if same parent
-                if (cur.left != null & cur.right != null) {
-                    if (cur.left.val == x || cur.left.val == y) {
-                        if (cur.right.val == x || cur.right.val == y) {
-                            // dont have to check which node is which since every node is unique
+                if (cur.left != null && cur.right != null) {
+                    if ((cur.left.val == x || cur.left.val == y) && (cur.right.val == x || cur.right.val == y)) {
                             return false;
                         }
                     }
@@ -75,19 +72,17 @@ public class IsCousins {
         return false;
     }
 
-    // most optimized solution 
+    // recursive dfs solution
     private int lx = 0;
     private int ly = 0;
     private TreeNode px;
     private TreeNode py;
-    
+
     public boolean isCousins2(TreeNode root, int x, int y) {
         // check if same level and different parent
         getLevelsAndParents(root, x, y, 0, null);
         return lx == ly && px != py;
-        
     }
-
     // recursive helper function
     // calculates the levels of x and y and get their parents
     private void getLevelsAndParents(TreeNode root, int x, int y, int depth, TreeNode parent) {
