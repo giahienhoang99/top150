@@ -26,7 +26,28 @@ public class BTZigzagLevelOrderTraversal {
         }
     }
 
+    private List<List<Integer>> levels = new ArrayList<>();
     public List<List<Integer>> zigzagLevelOrder1(TreeNode root) {
+        if (root == null) return levels;
+        helper(root, 0);
+        for (int i = 1; i < levels.size(); i+=2) {
+            Collections.reverse(levels.get(i));
+        }
+        return levels;
+    }
+    private void helper(TreeNode root, int depth) {
+        if (root == null) {
+            return;
+        }
+        if (levels.size() - 1 < depth) {
+            levels.add(new ArrayList<Integer>());
+        }
+        levels.get(depth).add(root.val);
+        helper(root.left, depth + 1);
+        helper(root.right, depth + 1);
+    }
+
+    public List<List<Integer>> zigzagLevelOrder2(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
             return res;
