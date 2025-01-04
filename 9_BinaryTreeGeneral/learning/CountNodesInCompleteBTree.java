@@ -22,7 +22,7 @@ public class CountNodesInCompleteBTree {
             this.right = right;
         }
     }
-    public int countNodes(TreeNode root) {
+    public int countNodes1(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -43,5 +43,11 @@ public class CountNodesInCompleteBTree {
         }
 
         return count;
+    }
+    public int countNodes2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + countNodes2(root.left) + countNodes2(root.right);
     }
 }
