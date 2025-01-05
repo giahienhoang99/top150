@@ -43,6 +43,23 @@ public class DFS {
         }
         return res;
     }
-
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> s = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !s.isEmpty()) {
+            // traverse left subtree
+            while (cur != null) {
+                s.push(cur);
+                cur = cur.left; // update cur
+            }
+            // process node (add to res)
+            cur = s.pop();
+            res.add(cur.val);
+            // traverse right subtree
+            cur = cur.right;
+        }
+        return res;
+    }
     
 }
