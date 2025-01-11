@@ -28,7 +28,7 @@ public class FlattenBTreeToLinkedList {
 
         TreeNode prev = null;
 
-        Stack<TreeNode> s = new Stack();
+        Stack<TreeNode> s = new Stack<TreeNode>();
         s.push(root);
 
         while (!s.isEmpty()) {
