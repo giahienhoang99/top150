@@ -1,6 +1,5 @@
 import java.util.PriorityQueue;
 import java.util.Collections;
-import java.util.AbstractMap.SimpleEntry;
 
 public class RelativeRanks {
     // initial solution
@@ -51,7 +50,7 @@ public class RelativeRanks {
             return value;
         }
     }
-    
+
     // better solution
     public String[] findRelativeRanks2(int[] score) {
         int N = score.length;
