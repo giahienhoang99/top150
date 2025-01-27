@@ -19,7 +19,4 @@ public class ContiguousArray {
 
         return res;
     }
-    public int findMaxLength2(int[] nums) {
-        
-    }
 }
