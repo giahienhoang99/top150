@@ -27,6 +27,11 @@ public class SubarrSumDivisibleByK {
 
             if (mapRemToCount.containsKey(rem)) {
                 count += mapRemToCount.get(rem);
+                // ko so bi lap vi no phai nhu the =)))
+                // ex:  [4,5,0,-2,-3,1], k = 5
+                //      moi lan gap lai rem == 4 (sau lan dau tien)
+                //      => thi phai tinh ca cac khoang:
+                //         tu (cur index) toi (cac index ma da co sum % k == 4)
             }
             // update map
             mapRemToCount.put(rem, mapRemToCount.getOrDefault(rem, 0) + 1);
