@@ -42,7 +42,6 @@ public class SubarrSumEqualsK {
 
             // bao nhieu thang = target
             int target = sum - k;
-            
             ans += freqMap.getOrDefault(target, 0);
 
             if (!freqMap.containsKey(sum)) {
