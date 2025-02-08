@@ -1,3 +1,5 @@
+from typing import List
+
 def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
     l, prod, count = 0, 1, 0
     if k <= 1:
