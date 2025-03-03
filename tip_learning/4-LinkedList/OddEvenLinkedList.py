@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
     # cur_index = 0 => val to track the index of the currently processed node
     # dummy1, dummy2 = pointing to 2 lists: nodes with odd i and those with even i
