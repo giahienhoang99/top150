@@ -1,5 +1,5 @@
 from typing import List
-from functools import lru_cache
+from functools import cache, lru_cache
 
 
 def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
@@ -43,8 +43,8 @@ def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
     DIRECTIONS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     m, n = len(matrix), len(matrix[0])
 
-    # memoization using lru_cache
-    @lru_cache(None)  # unlimited cache size
+    # memoization using cache from functools
+    @cache
     def explore(row, col):
         # path length minimum len = 1 cell
         longest_path = 1
