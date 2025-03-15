@@ -14,7 +14,7 @@ def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
     while q:
         for _ in range(len(q)):
             x, y = q.popleft()
-            if x == n - 1 and y == n - 1:
+            if (x, y) == (n - 1, n - 1):
                 return min_steps
             for dx, dy in DIRECTIONS:
                 nx, ny = x + dx, y + dy
