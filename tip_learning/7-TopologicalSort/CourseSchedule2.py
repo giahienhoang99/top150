@@ -1,6 +1,7 @@
 import collections
 from typing import List
 
+"""Topo sort using BFS"""
 
 def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
     """
@@ -32,3 +33,48 @@ def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int
                 q.append(v)
 
     return result if len(result) == numCourses else []
+
+
+
+"""Topo sort using DFS"""
+
+def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+    """
+    Topo sort using DFS:
+    - visited: track visited nodes to avoid cycles
+    - ancestors: track the current recursion stack to detect cycles
+    - perform DFS on unvisited nodes
+    - append node to result list after visiting all its dependents
+    - return [] if found cycle
+    """
+    graph = collections.defaultdict(list)
+    for a, b in prerequisites:
+        graph[b].append(a)
+
+    visited = set()
+    ancestors = set()
+    result = collections.deque()
+
+    def dfs(course):
+        if course in ancestors:  # cycle found
+            return False
+        if course in visited:
+            return True
+
+        ancestors.add(course)
+
+        for dependant in graph[course]:
+            if dfs(dependant) == False:
+                return False
+
+        result.appendleft(course)
+        visited.add(course)
+        ancestors.remove(course)
+
+        return True
+
+    for course in range(numCourses):
+        if dfs(course) == False:
+            return []
+
+    return list(result)
