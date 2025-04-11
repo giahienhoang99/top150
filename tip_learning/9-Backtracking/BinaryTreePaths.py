@@ -1,25 +1,24 @@
+from typing import List, Optional
+
+
 def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
     paths = []
-
-    def backtrack(node, path):
-        if not node:
-            return
-
+    path = [str(root.val)]
+        
+    def backtrack(node):
         if not (node.left or node.right):
-            paths.append(path)
+            paths.append("->".join(path))
             return
 
         if node.left:
-            temp1 = path
-            path += "->" + str(node.left.val)
-            backtrack(node.left, path)
-            path = temp1
-
+            path.append(str(node.left.val))
+            backtrack(node.left)
+            path.pop()
+        
         if node.right:
-            temp2 = path
-            path += "->" + str(node.right.val)
-            backtrack(node.right, path)
-            path = temp2
-
-    backtrack(root, str(root.val))
+            path.append(str(node.right.val))
+            backtrack(node.right)
+            path.pop()
+    
+    backtrack(root)
     return paths
