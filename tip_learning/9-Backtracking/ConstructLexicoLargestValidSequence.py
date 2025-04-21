@@ -1,6 +1,5 @@
 from typing import List
 
-
 def constructDistancedSequence(self, n: int) -> List[int]:
     """
     len_ans = 1 + 2(n - 1) = 2n - 1
